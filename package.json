@@ -1,0 +1,25 @@
+{
+  "name": "mkk-proxy",
+  "version": "1.0.0",
+  "description": "MKK's Proxy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huang-pei-mei/mkk-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huang-pei-mei/mkk-proxy/issues"
+  },
+  "homepage": "https://github.com/huang-pei-mei/mkk-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1",
+    "nodemon": "^2.0.7"
+  }
+}

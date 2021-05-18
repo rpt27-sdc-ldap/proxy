@@ -1,0 +1,13 @@
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+}
+.container:after {
+  clear:both;
+}
+
+div {
+  display:block;
+  padding-bottom: 5px;
+}
