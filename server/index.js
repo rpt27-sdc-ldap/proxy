@@ -1,10 +1,9 @@
 const express = require('express');
 const path = require('path');
-const httpProxy = require('http-proxy');
+const axios = require('axios');
 const app = express();
 
 const port = 5500;
-const proxy = httpProxy.createProxyServer();
 const priceServer = 'http://localhost:3000';
 const titleServer = 'http://localhost:2002';
 const reviewsServer = 'http://localhost:4000';
@@ -14,24 +13,59 @@ app.use(express.static(path.join(__dirname, '..', '/public')));
 
 
 app.all('/api/price/*', (req, res) => {
-  console.log('proxying request to price server');
-  proxy.web(req, res, {target: priceServer});
+  const url = (priceServer + req.path).trim();
+  console.log('proxying request to price server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
 });
 app.all('/api/book/*', (req, res) => {
-  console.log('proxying request to title server');
-  proxy.web(req, res, {target: titleServer});
+  const url = (titleServer + req.path).trim();
+  console.log('proxying request to title server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
 });
 app.all('/api/books', (req, res) => {
-  console.log('proxying request to title server');
-  proxy.web(req, res, {target: titleServer});
+  const url = (titleServer + req.path).trim();
+  console.log('proxying request to title server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
 });
 app.all('/reviews/*', (req, res) => {
-  console.log('proxying request to reviews server');
-  proxy.web(req, res, {target: reviewsServer});
+  const url = (reviewsServer + req.path).trim();
+  console.log('proxying request to reviews server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
 });
 app.all('/api/summary/*', (req, res) => {
-  console.log('proxying request to summary server');
-  proxy.web(req, res, {target: summaryServer});
+  const url = (summaryServer + req.path).trim();
+  console.log('proxying request to summary server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
 });
 
 
