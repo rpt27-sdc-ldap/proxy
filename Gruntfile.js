@@ -20,8 +20,8 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'service-reviews/dist/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
           {expand: true, cwd: 'service-summary/client/dist/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
           {expand: true, cwd: 'service-title/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
-          {expand: true, cwd: 'service-summary/client/dist/', src: ['**/*.css'], dest: 'styles/', action: 'upload'},
-          {expand: true, cwd: 'service-price/public/', src: ['**/*.css'], dest: 'styles/', action: 'upload'}
+          {expand: true, cwd: 'service-summary/client/dist/', src: ['**/*.css'], dest: 'styles/summary-styles', action: 'upload'},
+          {expand: true, cwd: 'service-price/public/', src: ['**/*.css'], dest: 'styles/price-styles', action: 'upload'}
         ]
       }
     }
