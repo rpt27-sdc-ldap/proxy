@@ -15,7 +15,6 @@ app.use(express.static(path.join(__dirname, '..', '/public')));
 
 app.get('/files/:fileName', async (req, res) => {
   const fileName = req.params.fileName;
-  console.log('== getting s3 file ==>', fileName);
   let key;
   if (!fileName) {
     res.end();
@@ -23,9 +22,9 @@ app.get('/files/:fileName', async (req, res) => {
   if (fileName.split('.')[1] === 'js') {
     key = 'scripts/' + fileName;
   } else if (fileName === 'style.css') {
-    key = 'styles/summary-styles/' + fileName;
+    key = 'styles/summary-styles/style.css';
   } else if (fileName === 'styles.css') {
-    key = 'styles/price-styles/' + fileName;
+    key = 'styles/price-styles/styles.css';
   } else {
     res.end();
   }
@@ -47,7 +46,7 @@ app.get('/files/:fileName', async (req, res) => {
       const readData = await convertToStr(data.Body);
       return readData;
     } catch (err) {
-      console.log("Error! ", err);
+      console.log("Error! with getting file ", key, err);
     }
   };
 
