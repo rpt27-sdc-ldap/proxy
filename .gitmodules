@@ -2,8 +2,8 @@
 	path = service-price
 	url = https://github.com/huang-pei-mei/price-service.git
 [submodule "service-reviews"]
-	path = service-title
-	url = https://github.com/huang-pei-mei/title-service.git
+	path = service-reviews
+	url = https://github.com/huang-pei-mei/reviews-service
 [submodule "service-summary"]
 	path = service-summary
 	url = https://github.com/huang-pei-mei/FEC-Publishers-Summary.git
