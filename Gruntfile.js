@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       options: {
         accessKeyId: '<%= awsKey %>',
         secretAccessKey: '<%= awsSecret %>',
-        region: '<%= awsRegion %>'
+        region: 'us-west-2'
       },
       staging: {
         options: {
@@ -16,12 +16,12 @@ module.exports = function(grunt) {
           differential: true
         },
         files: [
-          {expand: true, cwd: 'service-price/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'}
-          // {expand: true, cwd: 'service-reviews/dist/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
-          // {expand: true, cwd: 'service-summary/client/dist/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
-          // {expand: true, cwd: 'service-title/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
-          // {expand: true, cwd: 'service-summary/client/dist/', src: ['**/*.css'], dest: 'styles/', action: 'upload'},
-          // {expand: true, cwd: 'service-price/public/', src: ['**/*.css'], dest: 'styles/', action: 'upload'}
+          {expand: true, cwd: 'service-price/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
+          {expand: true, cwd: 'service-reviews/dist/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
+          {expand: true, cwd: 'service-summary/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
+          {expand: true, cwd: 'service-title/public/', src: ['**/*.js'], dest: 'scripts/', action: 'upload'},
+          // {expand: true, cwd: 'service-summary/public/', src: ['**/*.css'], dest: 'styles/summary-styles', action: 'upload'},
+          {expand: true, cwd: 'service-price/public/', src: ['**/*.css'], dest: 'styles/price-styles', action: 'upload'}
         ]
       }
     }
