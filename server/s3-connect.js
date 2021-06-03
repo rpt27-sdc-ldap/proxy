@@ -7,8 +7,4 @@ const s3Client = new S3.S3Client({
   credentials: fromIni({profile: 'admin-account'})
 });
 
-// const s3Client = new S3.S3Client({
-//   region: REGION
-// });
-
 module.exports = s3Client;
