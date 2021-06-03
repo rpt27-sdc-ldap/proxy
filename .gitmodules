@@ -1,1 +1,7 @@
 
+[submodule "service-reviews"]
+	path = service-reviews
+	url = https://github.com/huang-pei-mei/reviews-service.git
+[submodule "service-summary"]
+	path = service-summary
+	url = https://github.com/huang-pei-mei/FEC-Publishers-Summary.git
