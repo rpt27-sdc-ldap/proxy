@@ -5,3 +5,9 @@
 [submodule "service-summary"]
 	path = service-summary
 	url = https://github.com/huang-pei-mei/FEC-Publishers-Summary.git
+[submodule "service-title"]
+	path = service-title
+	url = https://github.com/huang-pei-mei/title-service.git
+[submodule "service-price"]
+	path = service-price
+	url = https://github.com/huang-pei-mei/price-service.git
