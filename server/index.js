@@ -6,10 +6,10 @@ const { GetObjectCommand } = require('@aws-sdk/client-s3');
 const s3 = require('./s3-connect.js');
 
 const port = 5500;
-const priceServer = 'http://localhost:3000';
-const titleServer = 'http://localhost:2002';
-const reviewsServer = 'http://localhost:4000';
-const summaryServer = 'http://localhost:1220';
+const priceServer = 'http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
+const titleServer = 'http://13.57.14.144:2002';
+const reviewsServer = 'http://ec2-54-67-73-166.us-west-1.compute.amazonaws.com:4001';
+const summaryServer = 'http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1220';
 
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
@@ -114,5 +114,5 @@ app.all('/api/summary/*', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Proxy listening on http://localhost:${port}`)
+  console.log(`Proxy listening on http://ec2-34-219-131-242.us-west-2.compute.amazonaws.com:${port}`)
 })
