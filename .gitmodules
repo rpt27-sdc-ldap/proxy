@@ -11,3 +11,6 @@
 [submodule "service-price"]
 	path = service-price
 	url = https://github.com/huang-pei-mei/price-service.git
+[submodule "service-agg"]
+	path = service-agg
+	url = https://github.com/huang-pei-mei/FEC-Agg.Review.git
