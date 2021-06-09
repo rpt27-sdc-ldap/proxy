@@ -1,13 +1,108 @@
-/* .container:before,
-.container:after {
-  content: "";
-  display: table;
-}
-.container:after {
-  clear:both;
+#summary {
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 
-div {
-  display:block;
-  padding-bottom: 5px;
-} */
+#reviews {
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: auto;
+  clear: left;
+}
+
+#aggReview {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: -60px;
+  margin-bottom: -60px;
+}
+
+/*/////////////////////
+/////  HEADER  ////////
+/////////////////////*/
+
+.main-header {
+  height: 120px;
+}
+
+.header-container {
+  max-width: 1000px;
+  margin: auto;
+}
+.right-side {
+  float: right;
+  width: 250px;
+  text-align: right;
+  margin-top: 20px;
+}
+.right-side a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: black;
+}
+.right-side a:hover {
+  text-decoration: underline;
+}
+.right-side img {
+  margin-top: 20px;
+}
+.header-logo-desktop {
+  float: left;
+  margin-top: 50px;
+}
+/* Hide mobile elements on desktop*/
+.header-logo-mobile {
+  display: none;
+}
+.header-nav-mobile {
+  display: none;
+}
+.search-box-mobile {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .main-header {
+    background-color: rgb(20, 20, 20);
+    height: 45px;
+  }
+  .header-nav-mobile {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .header-logo-mobile {
+    display: block;
+    width: 35px;
+    height: 35px;
+    padding-top: 5px;
+    margin: auto;
+  }
+  .search-box-mobile {
+    display: block;
+    float: right;
+    width: 30px;
+    margin-top: 8px;
+    margin-right: 10px;
+  }
+
+
+  /* hide the desktop elements*/
+  .right-side {
+    display: none;
+  }
+  .header-logo-desktop {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
+  .right-side a {
+    display: none;
+  }
+}

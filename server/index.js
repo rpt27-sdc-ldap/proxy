@@ -8,8 +8,10 @@ const s3 = require('./s3-connect.js');
 const port = 5500;
 const priceServer = 'http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
 const titleServer = 'http://13.57.14.144:2002';
-const reviewsServer = 'http://ec2-54-67-73-166.us-west-1.compute.amazonaws.com:4001';
+const reviewsServer = 'http://54.183.2.218:4001/books/';
 const summaryServer = 'http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1220';
+const aggServer = 'http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880';
+const alsoEnjoyedServer = 'http://ec2-35-162-103-218.us-west-2.compute.amazonaws.com:4000';
 
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
@@ -90,8 +92,23 @@ app.all('/api/books', (req, res) => {
     });
 });
 app.all('/reviews/*', (req, res) => {
-  const url = (reviewsServer + req.path).trim();
+  const bookId = req.path.split('/')[2];
+  const url = (reviewsServer + bookId + '/reviews/').trim();
   console.log('proxying request to reviews server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    })
+    .catch(err => {
+      console.error('fetch for reviews failed!', err.statusCode);
+    });
+});
+app.all('/api/summary/*', (req, res) => {
+  const url = (summaryServer + req.path).trim();
+  console.log('proxying request to summary server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -100,9 +117,20 @@ app.all('/reviews/*', (req, res) => {
       res.send(JSON.stringify(response.data));
     });
 });
-app.all('/api/summary/*', (req, res) => {
-  const url = (summaryServer + req.path).trim();
-  console.log('proxying request to summary server with method', req.method, 'directed to', url);
+app.all('/api/aggReview/*', (req, res) => {
+  const url = (aggServer + req.path).trim();
+  console.log('proxying request to aggregate review server with method', req.method, 'directed to', url);
+  axios({
+    method: req.method,
+    url: url
+  })
+    .then((response) => {
+      res.send(JSON.stringify(response.data));
+    });
+});
+app.all('/api/relatedIds/*', (req, res) => {
+  const url = (alsoEnjoyedServer + req.path).trim();
+  console.log('proxying request to also enjoyed server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url

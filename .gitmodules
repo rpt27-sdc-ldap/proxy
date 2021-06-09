@@ -14,3 +14,6 @@
 [submodule "service-agg"]
 	path = service-agg
 	url = https://github.com/huang-pei-mei/FEC-Agg.Review.git
+[submodule "service-also-enjoyed"]
+	path = service-also-enjoyed
+	url = https://github.com/huang-pei-mei/also-enjoyed-service.git
