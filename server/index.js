@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const compression = require('compression');
 const app = express();
 const { GetObjectCommand } = require('@aws-sdk/client-s3');
 const s3 = require('./s3-connect.js');
@@ -13,7 +14,22 @@ const summaryServer = 'http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1
 const aggServer = 'http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880';
 const alsoEnjoyedServer = 'http://ec2-35-162-103-218.us-west-2.compute.amazonaws.com:4000';
 
-app.use(express.static(path.join(__dirname, '..', '/public')));
+app.use(compression());
+const oneDay = 60*60*24;
+app.use(express.static(path.join(__dirname, '..', '/public'), {
+  maxage: oneDay
+}));
+
+const setCache = (req, res, next) => {
+  if (req.method === 'GET') {
+    res.set('Cache-control', `public, max-age=${oneDay}`);
+  } else {
+    res.set('Cache-control', 'no-store');
+  }
+  next();
+};
+
+app.use(setCache);
 
 app.get('/files/:fileName', async (req, res) => {
   const fileName = req.params.fileName;

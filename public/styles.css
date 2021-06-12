@@ -66,6 +66,11 @@
 }
 
 @media (max-width: 960px) {
+  HTML, body {
+    margin: 0px !important;
+    padding: 0px !important;
+    border: 0px !important;
+  }
   .main-header {
     background-color: rgb(20, 20, 20);
     height: 45px;
