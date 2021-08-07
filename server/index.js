@@ -8,12 +8,12 @@ const app = express();
 const { GetObjectCommand } = require('@aws-sdk/client-s3');
 const s3 = require('./s3-connect.js');
 const port = 5500;
-const priceServer = 'http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
-const titleServer = 'http://13.57.14.144:2002';
-const reviewsServer = 'http://127.0.0.1:4001/books/';
-const summaryServer = 'http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1220';
-const aggServer = 'http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880';
-const alsoEnjoyedServer = 'http://ec2-35-162-103-218.us-west-2.compute.amazonaws.com:4000';
+const priceServer = ''//http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
+const titleServer = ''//http://13.57.14.144:2002';
+const reviewsServer = 'http://18.222.195.241:4001';
+const summaryServer = ''//http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1220';
+const aggServer = ''//http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880';
+const alsoEnjoyedServer = ''//http://ec2-35-162-103-218.us-west-2.compute.amazonaws.com:4000';
 
 app.use(compression());
 const oneDay = 60*60*24;
@@ -111,7 +111,7 @@ app.all('/api/books', (req, res) => {
 
 app.all('/reviews/:id', (req, res) => {
   const bookId = req.params.id
-  const url = reviewsServer + bookId + '/reviews/';
+  const url = reviewsServer + '/reviews/' + bookId;
 
   //console.log('proxying request to reviews server with method', req.method, 'directed to', url);
   axios({
@@ -161,5 +161,5 @@ app.all('/api/relatedIds/*', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Proxy listening on http://ec2-34-219-131-242.us-west-2.compute.amazonaws.com:${port}`)
+  console.log(`Proxy listening on http://ec2-18-117-184-210.us-east-2.compute.amazonaws.com:${port}`)
 })
