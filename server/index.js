@@ -12,7 +12,7 @@ const s3 = require('./s3-connect.js');
 const port = 5500;
 const priceServer = 'http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
 const titleServer = 'http://ec2-35-177-204-177.eu-west-2.compute.amazonaws.com:2002';
-const reviewsServer = 'http://54.183.2.218:4001/books/';
+const reviewsServer = 'http://18.222.195.241:4001';
 const summaryServer = 'http://ec2-18-188-135-5.us-east-2.compute.amazonaws.com:1220';
 const aggServer = 'http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880';
 const alsoEnjoyedServer = 'http://ec2-35-162-103-218.us-west-2.compute.amazonaws.com:4000';
@@ -113,7 +113,7 @@ app.all('/api/books', (req, res) => {
 
 app.all('/reviews/:id', (req, res) => {
   const bookId = req.params.id
-  const url = reviewsServer + bookId + '/reviews/';
+  const url = reviewsServer + '/reviews/' + bookId;
 
   //console.log('proxying request to reviews server with method', req.method, 'directed to', url);
   axios({
