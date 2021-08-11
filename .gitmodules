@@ -7,7 +7,7 @@
 	url = https://github.com/huang-pei-mei/FEC-Publishers-Summary.git
 [submodule "service-title"]
 	path = service-title
-	url = https://github.com/huang-pei-mei/title-service.git
+	url = https://github.com/rpt27-sdc-ldap/title-service
 [submodule "service-price"]
 	path = service-price
 	url = https://github.com/huang-pei-mei/price-service.git
