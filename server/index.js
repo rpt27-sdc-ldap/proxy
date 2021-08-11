@@ -2,12 +2,13 @@ require('dotenv').config();
 require('newrelic');
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
+const http = require('http');
+const httpAgent = new http.Agent({ keepAlive: true });
+const axios = require('axios').create({httpAgent});
 const compression = require('compression');
 const app = express();
 const { GetObjectCommand } = require('@aws-sdk/client-s3');
 const s3 = require('./s3-connect.js');
-
 const port = 5500;
 const priceServer = 'http://ec2-34-221-235-141.us-west-2.compute.amazonaws.com:3000';
 const titleServer = 'http://ec2-35-177-204-177.eu-west-2.compute.amazonaws.com:2002';
@@ -109,10 +110,12 @@ app.all('/api/books', (req, res) => {
       res.send(JSON.stringify(response.data));
     });
 });
-app.all('/reviews/*', (req, res) => {
-  const bookId = req.path.split('/')[2];
-  const url = (reviewsServer + bookId + '/reviews/').trim();
-  console.log('proxying request to reviews server with method', req.method, 'directed to', url);
+
+app.all('/reviews/:id', (req, res) => {
+  const bookId = req.params.id
+  const url = reviewsServer + bookId + '/reviews/';
+
+  //console.log('proxying request to reviews server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
