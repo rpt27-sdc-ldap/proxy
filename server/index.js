@@ -10,6 +10,7 @@ const app = express();
 const { GetObjectCommand } = require('@aws-sdk/client-s3');
 const s3 = require('./s3-connect.js');
 const port = 5500;
+//http://ec2-54-183-57-133.us-west-1.compute.amazonaws.com:3000
 const priceServer = 'http://ec2-54-183-57-133.us-west-1.compute.amazonaws.com:3000';
 const titleServer = 'http://ec2-35-177-204-177.eu-west-2.compute.amazonaws.com:2002';
 const reviewsServer = 'http://54.183.2.218:4001/books/';
