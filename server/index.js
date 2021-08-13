@@ -79,7 +79,7 @@ app.get('/files/:fileName', async (req, res) => {
 
 app.all('/api/price/*', (req, res) => {
   const url = (priceServer + req.path).trim();
-  console.log('proxying request to price server with method', req.method, 'directed to', url);
+  // console.log('proxying request to price server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -90,7 +90,7 @@ app.all('/api/price/*', (req, res) => {
 });
 app.all('/api/book/*', (req, res) => {
   const url = (titleServer + req.path).trim();
-  console.log('proxying request to title server with method', req.method, 'directed to', url);
+  // console.log('proxying request to title server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -101,7 +101,7 @@ app.all('/api/book/*', (req, res) => {
 });
 app.all('/api/books', (req, res) => {
   const url = (titleServer + req.path).trim();
-  console.log('proxying request to title server with method', req.method, 'directed to', url);
+  // console.log('proxying request to title server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -129,7 +129,7 @@ app.all('/reviews/:id', (req, res) => {
 });
 app.all('/api/summary/*', (req, res) => {
   const url = (summaryServer + req.path).trim();
-  console.log('proxying request to summary server with method', req.method, 'directed to', url);
+  // console.log('proxying request to summary server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -140,7 +140,7 @@ app.all('/api/summary/*', (req, res) => {
 });
 app.all('/api/aggReview/*', (req, res) => {
   const url = (aggServer + req.path).trim();
-  console.log('proxying request to aggregate review server with method', req.method, 'directed to', url);
+  // console.log('proxying request to aggregate review server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
@@ -151,7 +151,7 @@ app.all('/api/aggReview/*', (req, res) => {
 });
 app.all('/api/relatedIds/*', (req, res) => {
   const url = (alsoEnjoyedServer + req.path).trim();
-  console.log('proxying request to also enjoyed server with method', req.method, 'directed to', url);
+  // console.log('proxying request to also enjoyed server with method', req.method, 'directed to', url);
   axios({
     method: req.method,
     url: url
